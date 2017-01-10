@@ -1,0 +1,115 @@
+<header ng-controller="tripViewController" ng-if="isAuthenticated() || share ">
+    <div class="top-bar">
+        <div id="name">
+            <span ng-if="!share">Welcome</span> {{name}}
+        </div>
+        
+        <span id="rest" ng-if="!share">
+        	<div id="trips">
+        		<a href="#/trips">Trips</a>
+        	</div>
+        	
+        	<div id="wishlist">
+        		<a href="#/wishlist">Wishlist</a>
+        	</div>
+        
+        	<div ng-click="logout()" id="logout">
+            	<a>Logout</a>
+        	</div>
+		</span>
+    </div>
+    <div class="total-distance">
+        <h1><span ng-if="share">{{name}}'s</span><span ng-if="!share">Your</span> Wishlist</h1>
+    </div>
+</header>
+
+<div ng-if="isAuthenticated() || share">
+    <div class="wishlist container-fluid">
+    	<div class="row" ng-if="!share">
+    		<div class="col-md-10 col-md-offset-1">
+    			<form name="newWishlistItem" ng-submit="submit()" novalidate>
+	                <br>
+	                <div class="input-group">      
+	                    <input type="text" ng-model="new_wishlist_item.wishlist_name" required>
+	                    <span class="highlight"></span>
+	                    <span class="bar"></span>
+	                    <label>Wish Name</label>
+	                </div>
+                    <div class="input-group start-input">
+                        <input type="text" g-places-autocomplete ng-model="new_wishlist_item.location" required>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Location</label>
+                    </div>
+	                <div class="input-group select-input">
+    	                <md-checkbox aria-label="Completed?" ng-model="new_wishlist_item.completed">Completed?</md-checkbox>
+                    </div>
+                    <div class="input-group date-input" ng-if="new_wishlist_item.completed">
+                        <input format="MM/DD/YYYY" ng-model="new_wishlist_item.date" placeholder="Date" ng-model-options="{ updateOn: 'blur' }" moment-picker="new_wishlist_item.date" required>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label></label>
+                    </div>
+                    <br>
+	                <button type="submit" ng-click="wish_submit()">Add</button>
+
+	            </form>
+    			
+    		</div>
+    	</div>
+    	
+    	<div class="row">
+    		<div class="col-md-10 col-md-offset-1">
+    			<a ng-if="!editmode" ng-click="toggleEdit()">Edit</a>
+    			<a ng-if="editmode" ng-click="toggleEdit()">Done</a>
+    			<a>Share</a>
+    		</div>
+    	</div>
+    	
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<br>
+				<br>
+				<ul>
+					<li ng-repeat="w in wishlist | orderBy: '-date'" ng-class="{'done':w.completed, 'share': share}">
+						<div class="in checkbox">
+							<md-checkbox ng-if="!w.completed && !share" ng-click="a=true" aria-label="Completed?" ng-model="w.checking"></md-checkbox>
+							<span ng-if="w.checking" class="input-group">
+                                <input format="MM/DD/YYYY" ng-model="w.date" placeholder="Date" ng-model-options="{ updateOn: 'blur' }" moment-picker="w.date" required>
+                            </span>
+							<i ng-if="w.checking" ng-click="check_item(w.wishlist_id)" class="fa fa-check" aria-hidden="true"></i>
+						</div>
+						
+						<div class="in edit" ng-if="w.completed && !share && editmode">
+							<i class="fa fa-pencil" aria-hidden="true" ng-click="edit_item(w.wishlist_id)"></i>
+						</div>
+						
+						<div class="in date">
+							<span ng-if="!w.checking && w.completed" >{{w.date | toDate | date:"dd MMM yyyy"}}</span>
+						</div>
+						
+						<div class="in delete" ng-if="!w.completed && !share && editmode">
+							<i class="fa fa-trash-o" aria-hidden="true" ng-click="delete_item(w.wishlist_id)"></i>
+						</div>
+						
+						<div class="in strike"> 
+							{{w.wishlist_name}} - 
+							<span class="bold">{{w.location_name}}</span>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+			
+		<br>
+		
+		
+		<div class="row footer">
+			<div class="col-sm-6 col-sm-offset-3">
+				<h4>Total: {{wishlist.length}}</h4>
+				<h4>Completed: {{num_done()}}</h4>
+				<h4>Remaining: {{wishlist.length - num_done()}}</h4>
+			</div>
+		</div>
+	</div>
+</div>

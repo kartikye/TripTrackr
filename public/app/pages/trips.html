@@ -1,0 +1,110 @@
+<!--test-->
+<span ng-if="isfAuthenticated()">
+<header ng-controller="tripViewController">
+    <div class="top-bar">
+        <div id="name">
+            Welcome {{name}}
+        </div>
+        
+        <span id="rest">
+        	<div id="trips">
+        		<a href="#/trips">Trips</a>
+        	</div>
+        	
+        	<div id="wishlist">
+        		<a href="#/wishlist">Wishlist</a>
+        	</div>
+        	
+        	<div id="profile">
+        	    <a href="#/profile">Profile</a>
+        	</div>
+        
+        	<div ng-click="logout()" id="logout">
+            	Logout
+        	</div>
+		</span>
+    </div>
+    <div class="total-distance">
+        <h1>{{ trips | totalDistance | distance }} Travelled</h1>
+    </div>
+</header>
+
+<div class="container-fluid"></div>
+    <br>
+    <br>
+    <div ng-controller="newTripController" class="new-trip row">
+        <div class="col-sm-12 col-md-8 col-md-offset-2">
+            <form name="newTripForm" ng-submit="submit()" novalidate>
+                <br>
+                <div class="input-group">      
+                    <input type="text" ng-model="trip.trip_name" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Trip Name</label>
+                </div>
+                <ul>
+                    <li ng-repeat="l in trip.legs">
+                        <form>
+                            <div class="input-group date-input">
+                                <input format="MM/DD/YYYY" ng-model="l.date" placeholder="Date" ng-model-options="{ updateOn: 'blur' }" moment-picker="l.date" required>
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label></label>
+                            </div>
+                            <div class="input-group start-input">
+                                <input type="text" g-places-autocomplete ng-model="l.start" required>
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label>Start</label>
+                            </div>
+                            
+                            <div class="input-group end-input">
+                                <input type="text" g-places-autocomplete ng-model="l.end" required>
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label>End</label>
+                            </div>
+                            <div class="select input-group mode-input">
+                                <select ng-model="l.mode" placeholder="Mode">
+                                    <option value="plane">Plane</option>
+                                    <option value="road">Road</option>
+                                </select>
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label></label>
+                            </div>
+                            <div class="input-group select-input">
+                                <md-checkbox aria-label="stopover" ng-model="l.stopover"></md-checkbox>
+                                <i ng-click="addLeg($index)" class="fa fa-plus" aria-hidden="true"></i>
+                                <i ng-click="removeLeg($index)" class="fa fa-minus" aria-hidden="true"></i>
+                            </div>
+                        </form>
+                    </li>
+                </ul>
+                <button type="submit" ng-click="submit()">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div ng-controller="tripViewController" class="row">
+        <div ng-repeat="d in trips| orderBy:'-legs[0].date'" class="trip col-sm-12 col-md-8 col-md-offset-2">
+            <h2>{{d.trip_name}}</h2>
+            <h4>{{d | totalTripDistance | distance}}</h4>
+            <hr>
+            <ul class="leg-outer">
+                <li class="leg" ng-repeat="l in d.legs | orderBy:'date'">
+                    <div class="date">{{l.date | toDate | date:"dd MMM yyyy"}}</div>
+                    <div>{{l.start_name}}</div>
+                    &nbsp;&nbsp;
+                    <i class="fa fa-plane" aria-hidden="true"></i>
+                    &nbsp;&nbsp;
+                    <div>{{l.end_name}}</div>
+                    <div class="distance">{{l.distance | distance}}</div>
+                </li>
+            </ul>
+            <div class="edit-icons">
+                <i class="fa fa-trash-o" aria-hidden="true" ng-click="deleteTrip(d.tripID)"></i>
+            </div>
+        </div>
+    </div>
+</div>
+</span>

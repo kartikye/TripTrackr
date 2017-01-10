@@ -1,0 +1,164 @@
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+@import "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css";
+@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css";
+@import "https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.css";
+@import url('https://fonts.googleapis.com/css?family=Roboto:100');
+@import 'autocomplete';
+@import 'datetimepicker';
+@import 'input';
+@import 'wishlist';
+
+$accent: #4883ac;
+
+#view{
+    width: 100%;
+    height: 100%;
+}
+
+h1{
+    font-family: 'Roboto';
+    font-size: 10vw;
+}
+
+header{
+    background: url("http://kartikye.com/img/bg.jpg");//../img/header-bg.jpg);
+    background-size: cover;
+    background-position: 0% 50%;
+    height: 50vh;
+    
+    color: white;
+    
+    .top-bar{
+        width: 100%;
+        padding-top: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        
+        div{
+            display: inline-block;
+        }
+        
+        font-size: 20px;
+        
+        #name{
+        }
+        
+        #rest{
+            float: right;
+            
+            div{
+                margin-left: 20px;
+                
+                a{
+                    color: #fff;
+                    
+                    &:hover{
+                        color: $accent;
+                    }
+                }
+            }
+        }
+    }
+    
+    .total-distance{
+        height:100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+body{
+    width: 100%;
+    
+    .new-trip{
+        ul{
+            list-style: none;
+            padding: 0;
+        }
+        
+        button{
+            background-color: #fff;
+            border-radius: 0;
+            border-style: solid;
+            border-width: 2.5px;
+            border-color: $accent;
+            padding: 8px 25px 8px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            
+            &:hover{
+                border-color: #000;
+            }
+        }
+    }
+    
+    .trip{
+        
+        margin-top: 20px;
+        
+        h2{
+            color: $accent;
+        }
+        
+        .leg-outer{
+            
+            list-style: none;
+            padding: 0;
+            
+            .leg{
+                div{
+                    display: inline-block;    
+                }
+                
+                .date{
+                    min-width: 90px;    
+                }
+                
+                .distance{
+                    float: right;
+                }
+            }
+        }
+        
+        .fa-plane{
+            color: $accent;
+        }
+    }
+    
+    #new-trip-button{
+        position: fixed;
+        z-index: 1000;
+        bottom: 50px;
+        right: 50px;
+    }
+}
+
+
+.row{
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.landing{
+    margin-top: -20px;
+    width: 100%;
+    height: 100%;
+    
+    .main{
+        width: 100%;
+        height: 100%;
+        background: url('../img/landing-bg.jpg');
+        background-size: cover;
+        background-position: 0% 50%;
+        
+        .center{
+            height:100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff
+        }
+    }
+}

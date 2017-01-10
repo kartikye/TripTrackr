@@ -1,0 +1,49 @@
+<header ng-controller="tripViewController" ng-if="isAuthenticated()">
+    <div class="top-bar">
+        <div id="name">
+            <span>Welcome</span> {{name}}
+        </div>
+        
+        <span id="rest" ng-if="!share">
+        	<div id="trips">
+        		<a href="#/trips">Trips</a>
+        	</div>
+        	
+        	<div id="wishlist">
+        		<a href="#/wishlist">Wishlist</a>
+        	</div>
+        
+        	<div ng-click="logout()" id="logout">
+            	<a>Logout</a>
+        	</div>
+		</span>
+    </div>
+    <div class="total-distance">
+        <h1>Your Wishlist</h1>
+    </div>
+</header>
+
+<div ng-if="isAuthenticated()">
+    <div class="profile container-fluid">
+    	<div class="row">
+    		<div class="col-md-10 col-md-offset-1">
+    			
+    		</div>
+    	</div>
+    	
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<br>
+				<br>
+				<h2>Trips</h1>
+				<h3>Number of Trips: {{profile.stats.trip_count}}</h3>
+				<br>
+				<h2>Cities</h2>
+				<h3>Cities Visited: {{profile.stats.cities_visited.length}}</h3>
+				<h3>Most Visited: {{profile.stats.cities_visited[arrMaxIndex(profile.stats.cities_count)].name}}, {{profile.stats.cities_count[arrMaxIndex(profile.stats.cities_count)]}} times </h2>
+			</div>
+		</div>
+			
+		<br>
+	</div>
+</div>

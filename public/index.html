@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="app" ng-cloak>
+    <head>
+        <!-- Scripts -->
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-route.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-aria.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+            <!-- Libs -->
+            <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyC_G4Kiyr-mBiXXUaX4b_48z3oInEQBX3g"></script>
+            <script type="text/javascript" src="assets/libs/autocomplete.js"></script>
+            <script type="text/javascript"src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.7/angular-material.min.js"></script>
+            <script type="text/javascript" src="http://momentjs.com/downloads/moment.js"></script>
+            <script type="text/javascript" src="assets/libs/datetimepicker.js"></script>
+            <script src="https://cdn.jsdelivr.net/satellizer/0.15.5/satellizer.min.js"></script>
+
+            <!-- Angular App -->
+            <script type="text/javascript" src="app/app.js"></script>
+            <script type="text/javascript" src="app/routes.js"></script>
+            
+            <!-- Controllers -->
+            <script type="text/javascript" src="app/controllers/landingController.js"></script>
+            <script type="text/javascript" src="app/controllers/tripViewController.js"></script>
+            <script type="text/javascript" src="app/controllers/newTripController.js"></script>
+            <script type="text/javascript" src="app/controllers/tripsController.js"></script>
+            <script type="text/javascript" src="app/controllers/wishlistController.js"></script>
+            <script type="text/javascript" src="app/controllers/profileController.js"></script>
+            <!-- Services -->
+            <script type="text/javascript" src="app/services/travelAPIService.js"></script>
+            <script type="text/javascript" src="app/services/distanceCalculationService.js"></script>
+            <script type="text/javascript" src="app/services/userService.js"></script>
+            
+            <!-- Filters -->
+            <script type="text/javascript" src="app/filters/date.js"></script>
+            <script type="text/javascript" src="app/filters/distance.js"></script>
+            <script type="text/javascript" src="app/filters/totalDistance.js"></script>
+
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="assets/css/styles.css" type="text/css" />
+        
+        <base href="/">
+    </head>
+    
+    <body>
+        <div id="view" ng-view></div>
+    </body>
+</html>

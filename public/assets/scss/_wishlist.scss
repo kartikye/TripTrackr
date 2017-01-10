@@ -1,0 +1,99 @@
+.container-fluid{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.wishlist{
+	
+	button{
+        background-color: #fff;
+        border-radius: 0;
+        border-style: solid;
+        border-width: 2.5px;
+        border-color: #4883ac;
+	    padding: 8px 25px 8px 25px;
+        font-size: 16px;
+        font-weight: bold;
+        
+        &:hover{
+            border-color: #000;
+        }
+    }
+	
+	.row{
+		.col-md-10{
+
+			ul{
+				list-style: none;
+				font-size: 20px;
+				
+				padding-left: 0;
+
+				li{
+					display: inline;	
+
+					.in{
+						display: inline-block;
+						
+						span, md-checkbox, i{
+							display: inline-block;
+						}
+					}
+					
+					.delete, .edit{
+						float: right;
+					}
+					
+					.edit{
+						margin-left: 20px;
+					}
+
+					.bold{
+						text-transform: uppercase;
+						font-weight: bold;
+					}
+					
+					.date{
+						
+					}
+
+					&:after{
+						content: "\A";
+						 white-space: pre;
+					}
+					
+				}
+			}
+
+			.done{
+				.date{
+					float: right;
+				}
+				.strike{
+					text-decoration: line-through;
+					color: #888;
+					margin-left: 50px;
+					margin-bottom: 10px;
+				}
+			}
+			
+			.share{
+				.strike{
+					margin-left: 5px;
+				}
+			}
+		}
+
+	}
+
+	.header{
+		background: #9477b0;
+	}
+
+	.footer{
+		color: white;	
+		padding-top: 20px;
+		padding-bottom: 20px;	
+		background: #9477b0;
+	}
+}
