@@ -1,3 +1,3 @@
 # TripTrackr
 
-A small Node.js + Express + Angular + SQL app to track your travels. Demo at websitr.kartikye.com:4002
+A small Node.js + Express + Angular + SQL app to track your travels. Demo at winami.io:4002
